@@ -14,3 +14,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "nt660.h"
+
+bool led_update_kb(led_t led_state) {
+    if (led_update_user(led_state)) {
+        writePin(CAPS_LOCK_LED_PIN, !led_state.caps_lock);
+    }
+    return true;
+}
